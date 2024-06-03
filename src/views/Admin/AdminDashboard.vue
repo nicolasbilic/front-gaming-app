@@ -18,9 +18,7 @@ import { ref } from 'vue';
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const Games = ref([]);
-axios.get(`${apiBaseUrl}/api/get/`, {
-  headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-})
+axios.get(`${apiBaseUrl}/api/get/`)
   .then((response) => {
     Games.value = response.data;
     console.log(response.data);

@@ -106,9 +106,7 @@ const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 onMounted(() => {
   game.value.title = route.params.gameTitle as string;
-  axios.get(`${apiBaseUrl}/api/get/title/${game.value.title}`, {
-    headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-  })
+  axios.get(`${apiBaseUrl}/api/get/title/${game.value.title}`)
     .then((response) => {
       // game.value.title = response.data.title as string;
       Games.value = response.data;

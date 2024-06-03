@@ -110,35 +110,6 @@ onMounted(() => {
       console.log(error);
     });
 });
-// onMounted(() => {
-//   axios.get(`${apiBaseUrl}/api/get/last6games`, {
-//     headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-//   })
-//     .then((response) => {
-//       Games.value = response.data;
-//       const imageUrls = Games.value.map((game: any) => game.img); // appel de la fonction de préchargement des images
-//       preloadImages(imageUrls);
-//       isLoading.value = false;
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// });
-
-// onMounted(async () => {
-//   try {
-//     const response = await axios.get(`${apiBaseUrl}/api/get/last6games`, {
-//       headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-//     });
-//     Games.value = response.data;
-//     const imageUrls = Games.value.map((game) => game.img); // appel de la fonction de préchargement des images
-//     preloadImages(imageUrls);
-//   } catch (error) {
-//     console.log(error);
-//   } finally {
-//     isLoading.value = false;
-//   }
-// });
 
 function formatTitleToUrl(title: any) {
   let formattedTitle = title.toLowerCase();

@@ -26,9 +26,7 @@ const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const signup = async () => {
   try {
-    const response = await axios.post(`${apiBaseUrl}/api/signup`, { email: email.value, password: password.value }, {
-      headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-    })
+    const response = await axios.post(`${apiBaseUrl}/api/signup`, { email: email.value, password: password.value })
     if (response.data.success) {
       router.push('/admin/login')
     } else {

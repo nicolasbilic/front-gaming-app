@@ -178,9 +178,7 @@ const game = ref<Game>({
 
 onMounted(() => { // récupère le jeu à éditer
   gameToEdit.value.title = route.params.gameTitle as string;
-  axios.get(`${apiBaseUrl}/api/get/title/${gameToEdit.value.title}`, {
-    headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-  })
+  axios.get(`${apiBaseUrl}/api/get/title/${gameToEdit.value.title}`)
     .then((response) => {
       const fetchedGame = response.data[0];
       console.log("Fetched Game:", fetchedGame);
@@ -201,9 +199,7 @@ onMounted(() => { // récupère le jeu à éditer
 const EditToAPI = () => { // modifie un jeu
   const index = listRatings.indexOf(game.value.rating); // convert numeric rating back to image path before sending to API
   game.value.rating = index !== -1 ? imgRatings[index] : '';
-  axios.put(`${apiBaseUrl}/api/update/${game.value._id}`, game.value, {
-    headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-  })
+  axios.put(`${apiBaseUrl}/api/update/${game.value._id}`, game.value)
     .then((response) => {
       successMessage.value = 'Votre jeu a été modifié avec succès';
       console.log(response);
@@ -233,9 +229,7 @@ const confirmDelete = () => {
 };
 
 const deleteToAPI = () => { // supprime un jeu
-  axios.delete(`${apiBaseUrl}/api/delete/${game.value._id}`, {
-    headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-  })
+  axios.delete(`${apiBaseUrl}/api/delete/${game.value._id}`)
     .then((response) => {
       successMessage.value = 'Votre jeu a été supprimé avec succès';
       console.log(response);
@@ -364,8 +358,7 @@ const handleImageUpload = (event: Event) => { // fonction qui prend un événeme
     formData.append('image', file); // ajoute le fichier téléchargé à l'objet FormData avec la clé 'image'; ça prépare les données du formulaire à être envoyées au serveur
     axios.post(`${apiBaseUrl}/api/upload`, formData, { // envoie une requête POST au serveur à l'URL spécifiée avec les données du formulaire contenues dans l'objet formData
       headers: { // ces en-têtes spécifient le type de contenu de la requête comme multipart/form-data, ce qui indique au serveur que le formulaire contient des données binaires, telles que des fichiers
-        'Content-Type': 'multipart/form-data',
-        'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app'
+        'Content-Type': 'multipart/form-data'
       }
     })
       .then(response => { // gère la réponse de la requête POST; si la requête est réussie, cette fonction est exécutée avec la réponse de la requête.
@@ -405,7 +398,7 @@ const handleFeatImgUpload = (event: Event) => {
     const formData = new FormData();
     formData.append('featImg', file);
     axios.post(`${apiBaseUrl}/api/upload'`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
+      headers: { 'Content-Type': 'multipart/form-data' }
     })
       .then(response => {
         featImgPath.value = response.data.featImgPath;

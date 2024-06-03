@@ -61,9 +61,7 @@ const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 onMounted(async () => { // récupère tous les jeux du genre (/ex horreur) de la page
   genre.value.name = route.params.genreName as string;
   try {
-    const response = await axios.get(`${apiBaseUrl}/api/get/${genre.value.name}`, {
-      headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-    });
+    const response = await axios.get(`${apiBaseUrl}/api/get/${genre.value.name}`);
     genre.value.description = response.data[0].genre.description as string;
     genre.value.images = response.data[0].genre.images as string[];
 
