@@ -83,9 +83,7 @@ function preloadImages(images: string[]) { // fonction pour précharger les imag
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 onMounted(() => {
-  axios.get(`${apiBaseUrl}/api/get/genre`, {
-    headers: { 'Access-Control-Allow-Origin': 'https://videogame-web-app.vercel.app' }
-  })
+  axios.get(`${apiBaseUrl}/api/get/genre`)
     .then((response) => {
       Games.value = response.data;
       const imageUrls = Games.value.map((game: any) => game.genre.images[2]); // appel de la fonction de préchargement des images
