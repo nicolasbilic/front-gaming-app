@@ -1,0 +1,64 @@
+@import './base.css';
+
+#app {
+  font-weight: normal;
+}
+
+a,
+button {
+  text-decoration: none;
+  color: var(--text-color-primary);
+  transition: 0.3s;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+@layer utilities {
+  .button {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 15px 6px 15px;
+    border-radius: var(--border-radius);
+
+    &:hover,
+    &:focus {
+      transform: translateY(-0.5em);
+    }
+  }
+
+  .button--action {
+    background-color: var(--color-horror-primary);
+  }
+
+  .button--info {
+    border: 2px solid var(--text-color-secondary);
+  }
+
+  .button--more {
+    border: 2px solid var(--text-color-primary);
+  }
+
+  .responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+}
+
+@layer containers {
+  .flex {
+    display: flex;
+  }
+}

@@ -1,0 +1,161 @@
+/* .genre-page-container { */
+/* added below pour que les composants ne flashent pas en haut de la page*/
+/* display: flex;
+  flex-direction: column;
+  min-height: 100vh; */
+/* Assurez-vous que le container prend toute la hauteur de la page */
+/* } */
+
+/* .mt-auto-custom { */
+/* margin-top: auto; */
+/* Pousse le footer vers le bas */
+/* } */
+
+.genre-page {
+  padding-bottom: 3em;
+}
+
+.genre-page-container::before {
+  content: url("../assets/jpg/genre-horreur-header.webp");
+  background-image: url('../assets/jpg/genre-mmo-header.webp');
+  position: absolute;
+  top: -9999rem;
+  left: -9999rem;
+  opacity: 0;
+}
+
+.genre-header {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color-secondary);
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 2em;
+  }
+}
+
+.genre-header::before {
+  content: url("../assets/jpg/genre-action-header.webp");
+  background-image: url('../assets/jpg/genre-course-header.webp');
+  position: absolute;
+  top: -9999rem;
+  left: -9999rem;
+  opacity: 0;
+}
+
+.genre-content {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--text-color-primary);
+
+  &>p {
+    padding: 4em 5em 0;
+  }
+}
+
+.genre-content::before {
+  content: url("../assets/jpg/genre-musique-header.webp");
+  background-image: url('../assets/jpg/genre-plateforme-header.webp');
+  position: absolute;
+  top: -9999rem;
+  left: -9999rem;
+  opacity: 0;
+}
+
+/*** Genre section ***/
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--n, 1), 1fr);
+  gap: 1em;
+
+  @media (width > 55em) {
+    --n: 2;
+  }
+
+  @media (width > 80em) {
+    --n: 3;
+  }
+}
+
+.genre-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 0;
+
+  .genre-grid {
+    padding-top: 1rem;
+
+    .genre-block {
+      position: relative;
+
+      &:hover,
+      &:focus {
+        transform: translateY(-0.5em);
+        transition: transform 0.3s;
+      }
+
+      img {
+        height: 200px;
+        border-radius: var(--border-radius);
+      }
+
+      span {
+        position: absolute;
+        bottom: 20%;
+        left: 5%;
+        color: var(--text-color-secondary);
+        font-weight: 700;
+        font-size: 30px;
+        text-shadow: 1px 1px black;
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  padding-bottom: 3em;
+}
+
+.pagination button {
+  width: 6em;
+  height: 2em;
+  background-color: rgb(79, 185, 141);
+  color: var(--text-color-secondary);
+  border-radius: var(--border-radius);
+  border: none;
+  font-size: 16px;
+
+  &:hover {
+    background-color: rgb(45, 208, 140);
+  }
+
+  &:disabled {
+    background-color: rgb(21, 50, 38);
+  }
+}
+
+.pagination span {
+  font-size: 20px;
+}
+
+@media (min-width: 450px) {
+  .genre-container {
+    .genre-grid {
+      .genre-block {
+        img {
+          height: 390px;
+        }
+      }
+    }
+  }
+}
