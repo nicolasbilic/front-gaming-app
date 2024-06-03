@@ -3,7 +3,7 @@
     <section class="genre-header genre-page" :style="{ backgroundImage: `url(${genre.images[0]})` }">
       <h1>JEUX {{ capitalize(genre.name) }}</h1>
     </section>
-    <section class="genre-content" style="background-color: #fdfdfd;">
+    <section class="genre-content">
       <p>{{ genre.description }}</p>
       <div class="genre-container genre-page">
         <div class="genre-grid">
@@ -67,9 +67,8 @@ onMounted(async () => { // récupère tous les jeux du genre (/ex horreur) de la
 
     Games.value = response.data;
     const headerBgImg = genre.value.images[0];
-    const bodyBgImg = genre.value.images[1];
     const gameImgs = Games.value.map((game: any) => game.img);
-    preloadImages([headerBgImg, bodyBgImg, ...gameImgs]);
+    preloadImages([headerBgImg, ...gameImgs]);
 
     isLoading.value = false;
 

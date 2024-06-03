@@ -53,6 +53,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   color: var(--text-color-primary);
+  background-color: #fdfdfd;
 
   &>p {
     padding: 4em 5em 0;
