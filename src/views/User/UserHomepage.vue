@@ -13,8 +13,7 @@
           title="Précommandez" /> -->
         <ActionButton class="button button--action" link="games/library/plateforme" label="JEUX PLATEFORME"
           title="Plateforme" />
-        <ActionButton class="button button--info" link="/games/wedding-massacre" label="VOIR LE JEU"
-          title="Voir le jeu" />
+        <ActionButton class="button button--info" link="/games/beyond" label="VOIR LE JEU" title="Voir le jeu" />
       </div>
     </section>
     <!-- <section class="visit">
