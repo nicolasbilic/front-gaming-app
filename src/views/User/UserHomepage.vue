@@ -4,14 +4,15 @@
     <section class="header-section">
       <div class="header-section-content">
         <div>
-          <h1>WEDDING <br> MASSACRE</h1>
+          <h1>BEYOND</h1>
         </div>
-        <p>Plongez dans l'horreur d'un mariage devenu un cauchemar éveillé en évitant les dangereuses créatures
-          qui croiseront votre chemin.
+        <p>Incarnez Stijo, un aventurier intrépide, et partez à la conquête d'une île légendaire, bondée de dangers et
+          de mystères.
         </p>
         <!-- <ActionButton class="button button--action" link="/games/evasion-du-manoir" label="PRÉCOMMANDEZ"
           title="Précommandez" /> -->
-        <ActionButton class="button button--action" link="games/library/horreur" label="JEUX HORREUR" title="Horreur" />
+        <ActionButton class="button button--action" link="games/library/plateforme" label="JEUX PLATEFORME"
+          title="Plateforme" />
         <ActionButton class="button button--info" link="/games/wedding-massacre" label="VOIR LE JEU"
           title="Voir le jeu" />
       </div>

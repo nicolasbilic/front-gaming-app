@@ -38,7 +38,7 @@ button {
   }
 
   .button--action {
-    background-color: var(--color-horror-primary);
+    background-color: #01A0D4;
   }
 
   .button--info {

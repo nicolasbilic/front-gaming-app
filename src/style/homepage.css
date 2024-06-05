@@ -1,7 +1,7 @@
 /*** Header Section ***/
 .header-section {
   position: relative;
-  background-image: url('../assets/jpg/homepage-feat-game-mobile.webp');
+  background-image: url('../assets/jpg/homepage-game-mobile.webp');
   min-height: 750px;
   background-position: top;
   background-repeat: no-repeat;
@@ -26,7 +26,7 @@
     }
 
     h1 {
-      text-shadow: 4px 4px 6px black, 0 0 10px black;
+      text-shadow: 1px 1px 2px black, 0 0 10px black;
       line-height: 70px;
       color: var(--text-color-secondary);
       font-size: 55px;
@@ -41,12 +41,16 @@
       color: var(--text-color-secondary);
       padding: 0 10%;
       text-align: center;
-      text-shadow: 1px 1px black;
+      text-shadow: 2px 2px 5px black;
     }
 
     a:nth-child(3):hover,
     a:nth-child(3):focus {
-      box-shadow: 0 0.5em 0.5em -0.4em var(--color-horror-primary);
+      box-shadow: 0 0.5em 0.5em -0.4em #01A0D4;
+    }
+
+    a:nth-child(4) {
+      background-color: #67A4B8;
     }
 
     a:nth-child(4):hover,
@@ -369,7 +373,8 @@
 @media screen and (min-width: 769px) {
   .header-section {
     min-height: 580px;
-    background-image: url('../assets/jpg/homepage-feat-game.webp');
+    background-image: url('../assets/jpg/homepage-game-dektop.webp');
+    background-position: center;
 
     .header-section-content {
       left: 15%;
