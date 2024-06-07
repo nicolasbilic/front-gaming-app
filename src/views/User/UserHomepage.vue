@@ -96,7 +96,10 @@ function preloadImages(images: string[]) { // fonction pour précharger les imag
   });
 }
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+// const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const apiBaseUrl = import.meta.env.MODE === 'development'
+  ? import.meta.env.VITE_API_BASE_URL_DEV
+  : import.meta.env.VITE_API_BASE_URL;
 
 onMounted(() => {
   axios.get(`${apiBaseUrl}/api/get/last6games`)

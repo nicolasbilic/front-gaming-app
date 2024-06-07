@@ -56,7 +56,9 @@ function preloadImages(images: string[]) {
   });
 }
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const apiBaseUrl = import.meta.env.MODE === 'development'
+  ? import.meta.env.VITE_API_BASE_URL_DEV
+  : import.meta.env.VITE_API_BASE_URL;
 
 onMounted(async () => { // récupère tous les jeux du genre (/ex horreur) de la page
   genre.value.name = route.params.genreName as string;

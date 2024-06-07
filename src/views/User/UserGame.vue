@@ -102,7 +102,10 @@ const game = ref<{ title: string; }>({
 const route = useRoute();
 
 // Utilise la variable d'environnement pour l'URL de l'API
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+// const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const apiBaseUrl = import.meta.env.MODE === 'development'
+  ? import.meta.env.VITE_API_BASE_URL_DEV
+  : import.meta.env.VITE_API_BASE_URL;
 
 onMounted(() => {
   game.value.title = route.params.gameTitle as string;
