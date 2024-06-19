@@ -40,8 +40,8 @@ body {
 }
 
 body::before {
-  content: url("../assets/jpg/homepage-feat-game-mobile.webp");
-  background-image: url('../assets/jpg/homepage-feat-game.webp');
+  content: url("../assets/jpg/homepage-game-mobile.webp");
+  background-image: url('../assets/jpg/homepage-game-dektop.webp');
   position: absolute;
   top: -9999rem;
   left: -9999rem;

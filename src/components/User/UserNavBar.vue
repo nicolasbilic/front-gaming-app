@@ -4,7 +4,7 @@
       <!--- NavMenu Mobile --->
       <div class="sidenav" ref="navMenu" :style="{ left: isNavOpen ? '0' : '-250px' }"> <!-- Burger Menu -->
         <div id="closeBtn"> <!-- Close BM -->
-          <img @click="closeNav" src="@/assets/svg/x-mark.svg" title="Fermer le menu" alt="Fermer le menu">
+          <img @click="closeNav" src="../../assets/svg/x-mark.svg" title="Fermer le menu" alt="Fermer le menu">
         </div>
         <ul> <!-- Links BM -->
           <li v-for="link in navLinks" :key="link.url">
@@ -14,19 +14,18 @@
         </ul>
       </div>
       <a id="openBtn" @click="toggleNav" :style="{ display: is1100Screen ? 'flex' : 'none' }"> <!-- BM Icon -->
-        <img src="@/assets/svg/hamburger.svg" title="Ouvrir le menu" alt="Ouvrir le menu">
+        <img src="../../assets/svg/hamburger.svg" title="Ouvrir le menu" alt="Ouvrir le menu">
       </a>
       <RouterLink class="brand" to="/" title="Accueil Ludus Studios"
         :style="{ marginLeft: is1100Screen ? '' : '50px' }">
-        <img src="@/assets/svg/brand-logo.svg" alt="Marque Ludus Studios"
-          :style="{ width: is576Screen ? '141px' : '' }">
+        <img height="auto" width="141" src="../../assets/svg/brand-logo.svg" alt="Marque Ludus Studios">
       </RouterLink>
       <ul> <!-- NavLinks -->
         <li v-for="link in navLinks" key="navLinks.url" :style="{ display: is1100Screen ? 'none' : 'block' }">
           <RouterLink :active-class="active" :to="link.url" :title="link.title">{{ link.label }}</RouterLink>
         </li>
       </ul>
-      <!-- <RouterLink class="admin" to="/admin/dashboard" title="Panel Admin">
+      <!-- <RouterLink class="admin" to="/admin/login" title="Panel Admin">
         <img src="@/assets/svg/user-square.svg" alt="User">Admin
       </RouterLink> -->
     </nav>
@@ -132,44 +131,49 @@ nav {
     display: flex;
     align-items: center;
 
-  }
-
-  .admin {
-    display: flex;
-    margin: 10px 20px 10px auto;
-    background-color: #FEA14C;
-    font-weight: 600;
-    padding: 5px 15px;
-    font-size: 16px;
-    color: var(--text-color-secondary);
-    border-radius: var(--border-radius);
-
-    &:hover {
-      background-color: #e26f03;
-    }
-
-    img {
-      padding-right: 10px;
+    @media (width > 576px) {
+      img {
+        width: 250px;
+      }
     }
   }
+}
 
-  &>ul {
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 50px;
-    gap: 2rem;
-    flex-grow: 1;
+.admin {
+  display: flex;
+  margin: 10px 20px 10px auto;
+  background-color: #FEA14C;
+  font-weight: 600;
+  padding: 5px 15px;
+  font-size: 16px;
+  color: var(--text-color-secondary);
+  border-radius: var(--border-radius);
 
-    li {
-      font-size: 18px;
+  &:hover {
+    background-color: #e26f03;
+  }
 
-      a:hover {
-        color: var(--color-horror-primary);
-      }
+  img {
+    padding-right: 10px;
+  }
+}
 
-      .active {
-        border-bottom: 2px solid var(--color-horror-primary);
-      }
+nav>ul {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 50px;
+  gap: 2rem;
+  flex-grow: 1;
+
+  li {
+    font-size: 18px;
+
+    a:hover {
+      color: var(--color-horror-primary);
+    }
+
+    .active {
+      border-bottom: 2px solid var(--color-horror-primary);
     }
   }
 }

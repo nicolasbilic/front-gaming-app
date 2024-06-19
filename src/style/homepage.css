@@ -149,7 +149,7 @@
       }
 
       img {
-        height: 319px;
+        /* height: 319px; */
         border-radius: var(--border-radius);
 
         &:hover,

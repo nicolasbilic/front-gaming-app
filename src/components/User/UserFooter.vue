@@ -2,8 +2,7 @@
   <footer>
     <div>
       <RouterLink class="brand" to="/" title="Accueil Ludus Studios" :style="{ marginLeft: is992Screen ? '' : '50px' }">
-        <img src="@/assets/svg/brand-logo.svg" alt="Marque Ludus Studios"
-          :style="{ width: is576Screen ? '141px' : '' }">
+        <img height="auto" width="141" src="../../assets/svg/brand-logo.svg" alt="Marque Ludus Studios">
       </RouterLink>
       <ul :style="{ display: is1200Screen ? 'none' : 'flex' }">
         <li v-for="link in footerLinks" key="footerLinks.url">
@@ -53,6 +52,12 @@ footer {
       margin-left: 10px;
       display: flex;
       align-items: center;
+
+      @media (width > 576px) {
+        img {
+          width: 250px;
+        }
+      }
     }
 
     p {
