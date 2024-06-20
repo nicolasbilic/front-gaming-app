@@ -51,7 +51,7 @@ function preloadImages(images: string[]) {
   images.forEach((image) => {
     const img = new Image();
     img.src = image;
-    img.onload = () => console.log(`Image loaded: ${image}`);
+    // img.onload = () => console.log(`Image loaded: ${image}`);
     img.onerror = () => console.log(`Failed to load image: ${image}`);
   });
 }

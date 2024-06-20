@@ -113,7 +113,7 @@ onMounted(() => {
     .then((response) => {
       // game.value.title = response.data.title as string;
       Games.value = response.data;
-      console.log(response.data);
+      // console.log(response.data);
       isLoading.value = false;
     })
     .catch((error) => {
