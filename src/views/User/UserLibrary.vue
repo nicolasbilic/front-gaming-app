@@ -15,7 +15,7 @@
       <div class="genre-grid">
         <div class="genre-box" v-for="game in Games" :key="game.title">
           <RouterLink :to="'/games/library/' + game.genre.name" :title="game.genre.name">
-            <img height="200" width="356" :src="game.genre.images[2]" :alt="game.genre.name">
+            <img height="200" width="356" :src="game.genre.images[2]" :alt="'Image de genre ' + game.genre.name">
             <span>{{ game.genre.name }}</span>
           </RouterLink>
         </div>
