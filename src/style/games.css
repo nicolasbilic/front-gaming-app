@@ -4,6 +4,7 @@
   background-size: cover;
   background-position: bottom;
   min-height: 450px;
+  width: 100%;
   position: relative;
 
   @media (width > 600px) {
@@ -25,18 +26,20 @@
     margin-bottom: 3%;
     color: var(--text-color-secondary);
 
-    img {
+    /* img {
       width: 320px;
-    }
+    } */
 
     p {
       padding-right: 10%;
+      max-height: 76px;
     }
   }
 }
 
 .games-header::before {
-  content: url('../assets/jpg/games-library.webp');
+  /* content: url('../assets/jpg/games-library.webp'); */
+  background-image: url('../assets/jpg/games-library.webp');
   position: absolute;
   top: -9999rem;
   left: -9999rem;
@@ -88,6 +91,9 @@
   align-items: center;
   padding-top: 3rem;
   padding-bottom: 5rem;
+  height: 2875px;
+  /* height: 100%; */
+  width: 100%;
 
   .genre-grid {
     padding-top: 2rem;
@@ -102,7 +108,7 @@
       }
 
       img {
-        max-height: 200px;
+        /* max-height: 200px; */
         border-radius: var(--border-radius);
 
         &:hover,
@@ -142,15 +148,15 @@
   }
 }
 
-@media (min-width: 450px) {
+@media (width >=881px) {
   .genre-section {
-    .genre-grid {
-      .genre-box {
-        &>img:nth-child(1) {
-          height: 390px;
-        }
-      }
-    }
+    height: 1530px;
+  }
+}
+
+@media (width >=1281px) {
+  .genre-section {
+    height: 1080px;
   }
 }
 

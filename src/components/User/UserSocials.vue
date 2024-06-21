@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="socials-section">
     <p>Parlons jeux!</p>
     <div>
       <a href="" aria-label="facebook">
@@ -55,11 +55,13 @@
 </script>
 
 <style scoped>
-section {
+.socials-section {
   display: flex;
   justify-content: space-around;
   padding: 20px 0;
   background-color: #F3F3F3;
+  height: 70px;
+  width: 100%;
 
   a:nth-child(2) {
     margin-left: auto;

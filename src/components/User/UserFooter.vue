@@ -2,7 +2,7 @@
   <footer>
     <div>
       <RouterLink class="brand" to="/" title="Accueil Ludus Studios" :style="{ marginLeft: is992Screen ? '' : '50px' }">
-        <img height="auto" width="141" src="../../assets/svg/brand-logo.svg" alt="Marque Ludus Studios">
+        <img height="13" width="141" src="../../assets/svg/brand-logo.svg" alt="Marque Ludus Studios">
       </RouterLink>
       <ul :style="{ display: is1200Screen ? 'none' : 'flex' }">
         <li v-for="link in footerLinks" key="footerLinks.url">
@@ -56,6 +56,7 @@ footer {
       @media (width > 576px) {
         img {
           width: 250px;
+          height: 24px;
         }
       }
     }

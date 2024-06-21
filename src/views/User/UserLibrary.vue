@@ -2,7 +2,7 @@
   <div>
     <section class="games-header" id="library">
       <div class="games-content">
-        <img src="../../assets/svg/brand-logo.svg" alt="Newsletter">
+        <img width="320" height="30" src="../../assets/svg/brand-logo.svg" alt="Newsletter">
         <p>La plus grande collection de jeux-vidéos. Les meilleurs titres, tous les genres, d’hier et d’aujourd’hui.</p>
       </div>
     </section>
@@ -15,7 +15,7 @@
       <div class="genre-grid">
         <div class="genre-box" v-for="game in Games" :key="game.title">
           <RouterLink :to="'/games/library/' + game.genre.name" :title="game.genre.name">
-            <img :src="game.genre.images[2]" :alt="game.genre.name">
+            <img height="200" width="356" :src="game.genre.images[2]" :alt="game.genre.name">
             <span>{{ game.genre.name }}</span>
           </RouterLink>
         </div>
