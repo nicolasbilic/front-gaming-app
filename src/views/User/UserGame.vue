@@ -12,7 +12,7 @@
             <a href="#features" @click.prevent="scrollToSection('#features')" class="button">Fonctionnalités</a>
           </div>
           <div class="responsive-img-wrapper">
-            <img class="responsive-imge" :alt="game.title" :src="game.images[0]">
+            <img height="195" width="343" class="responsive-imge" :alt="game.title" :src="game.images[0]">
           </div>
           <div :style="{ display: use1100width ? 'block' : 'none' }">
             <!-- <div class="screenshots">

@@ -5,20 +5,20 @@
 }
 
 .responsive-img-wrapper {
-  /* position: relative; */
   width: 100%;
+  /* position: relative; */
   /* padding-top: var(--aspect-ratio-percentage); */
   /* 56.25%; réserve un espace vertical proportionnel à la largeur (16:9). En termes simples, si la largeur du conteneur est 100 pixels, la hauteur sera 56,25 pixels  */
   /* border: 3px solid blue; */
 }
 
 .responsive-imge {
-  /* position: absolute; */
-  /* top: 0;
-  left: 0; */
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* position: absolute; */
+  /* top: 0;
+  left: 0; */
   /* permet à l’image de couvrir entièrement le conteneur tout en conservant ses proportions */
   /* border: 3px solid red; */
 }
@@ -42,6 +42,13 @@
     .responsive-imge {
       min-height: 400px;
       max-width: 700px;
+    }
+  }
+
+  @media (width > 1210px) {
+    .responsive-imge {
+      height: 400px;
+      width: 700px;
     }
   }
 
