@@ -9,7 +9,7 @@
         <div class="genre-grid">
           <div class="genre-block" v-for="game in paginatedGames" :key="game.title">
             <RouterLink :to="'/games/' + formatTitleToUrl(game.title)" :title="game.title">
-              <img :src="game.img" :alt="game.title">
+              <img height="250" width="250" :src="game.img" :alt="game.title">
               <span>{{ game.title }}</span>
             </RouterLink>
           </div>

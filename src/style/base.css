@@ -4,6 +4,8 @@
   --color-horror-primary: #8B0000;
   --color-background: var(--text-color-secondary);
   --border-radius: 8px;
+  --aspect-ratio: 16 / 9;
+  --aspect-ratio-percentage: calc(100% / (var(--aspect-ratio)));
 }
 
 *,

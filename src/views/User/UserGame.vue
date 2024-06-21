@@ -11,7 +11,9 @@
             <a href="#description" @click.prevent="scrollToSection('#description')" class="button">Description</a>
             <a href="#features" @click.prevent="scrollToSection('#features')" class="button">Fonctionnalités</a>
           </div>
-          <img class="responsive-img" :alt="game.title" :src="game.images[0]">
+          <div class="responsive-img-wrapper">
+            <img class="responsive-imge" :alt="game.title" :src="game.images[0]">
+          </div>
           <div :style="{ display: use1100width ? 'block' : 'none' }">
             <!-- <div class="screenshots">
               <p>Captures d'écran</p>
@@ -26,7 +28,7 @@
               <img :alt="game.title" :src="game.images[3]">
             </div> -->
           </div>
-          <img :src="game.rating" class="pegi" alt="PEGI">
+          <img height="100" width="82" :src="game.rating" class="pegi" alt="PEGI">
           <div class="about-game">
             <h2 id="aboutGame">À propos du jeu</h2>
             <div class="about-game-content">
@@ -51,6 +53,22 @@
             </div>
           </div>
         </div>
+        <div class="one-game-side-info">
+          <div class="essai">
+            <details :style="{ display: use1100width ? 'none' : 'block' }">
+              <summary>Description</summary>
+              <p>{{ game.description }}</p>
+            </details>
+            <div id="description" class="desktop-description" :style="{ display: use1100width ? 'block' : 'none' }">
+              <h2>Description</h2>
+              <p>{{ game.description }}</p>
+            </div>
+            <h2 id="features">Fonctionnalités</h2>
+            <ul>
+              <li v-for="feature in game.features" :key="feature">{{ feature }}</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <!-- 2nd Grid column -->
       <div class="purchase-container" :style="{ display: use1100width ? 'block' : 'none' }">
@@ -64,22 +82,6 @@
         </div>
       </div>
     </section>
-    <div class="one-game-side-info">
-      <div class="essai">
-        <details :style="{ display: use1100width ? 'none' : 'block' }">
-          <summary>Description</summary>
-          <p>{{ game.description }}</p>
-        </details>
-        <div id="description" class="desktop-description" :style="{ display: use1100width ? 'block' : 'none' }">
-          <h2>Description</h2>
-          <p>{{ game.description }}</p>
-        </div>
-        <h2 id="features">Fonctionnalités</h2>
-        <ul>
-          <li v-for="feature in game.features" :key="feature">{{ feature }}</li>
-        </ul>
-      </div>
-    </div>
     <UserSocials />
     <UserFooter />
   </div>
