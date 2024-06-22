@@ -1,6 +1,7 @@
 import './style/main.css'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory, type RouteMeta } from 'vue-router'
+import axios from 'axios';
 import App from '@/App.vue'
 import UserHomepage from './views/User/UserHomepage.vue'
 import UserLibrary from './views/User/UserLibrary.vue'
@@ -61,29 +62,70 @@ const router = createRouter({
   }
 })
 
+const apiBaseUrl = import.meta.env.MODE === 'development'
+  ? import.meta.env.VITE_API_BASE_URL_DEV
+  : import.meta.env.VITE_API_BASE_URL;
+
 // guarde de navigation
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = checkAuthentication(); // fonction pour vérifier l'authentification
+router.beforeEach(async (to, from, next) => {
+  const isAuthenticated = checkAuthentication();
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!isAuthenticated) { // vérifie si la route nécessite une authentification
-      next('/admin/login'); // redirige vers la page de connexion si l'utilisateur n'est pas authentifié
+    if (!isAuthenticated) {
+      next('/admin/login');
     } else {
-      next(); // poursuit la navigation
+      next();
     }
   } else {
-    next(); // si la route ne nécessite pas d'authentification, poursuit simplement la navigation
-  }
-  // Mettre à jour le titre
-  const meta = to.meta as Meta;
-  if (meta.title) {
-    document.title = meta.title;
+    next();
   }
 
-  // Mettre à jour la description
-  if (meta.description) {
+  const meta = to.meta as Meta;
+
+  if (to.path.includes('/games/') && to.params.gameTitle) {
+    try {
+      const response = await axios.get(`${apiBaseUrl}/api/get/title/${to.params.gameTitle}`);
+      const gameData = response.data;
+
+      if (gameData) {
+        document.title = gameData.title || meta.title || 'Ludus Studios';
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+          metaDescription.setAttribute('content', gameData.description || meta.description || 'Tous les meilleurs jeux-vidéo du moment.');
+        }
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération des données du jeu:', error);
+      document.title = meta.title ?? 'Ludus Studios';
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', meta.description ?? 'Tous les meilleurs jeux-vidéo du moment.');
+      }
+    }
+  } else if (to.path.includes('/games/library/') && to.params.genreName) {
+    try {
+      const response = await axios.get(`${apiBaseUrl}/api/get/genre/${to.params.genreName}`);
+      const genreData = response.data;
+
+      if (genreData) {
+        document.title = genreData.name || meta.title || 'Ludus Studios';
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+          metaDescription.setAttribute('content', genreData.description || meta.description || 'Tous les meilleurs jeux-vidéo du moment.');
+        }
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération des données du genre:', error);
+      document.title = meta.title ?? 'Ludus Studios';
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', meta.description ?? 'Tous les meilleurs jeux-vidéo du moment.');
+      }
+    }
+  } else {
+    document.title = meta.title ?? 'Ludus Studios';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', meta.description);
+      metaDescription.setAttribute('content', meta.description ?? 'Tous les meilleurs jeux-vidéo du moment.');
     }
   }
 });
