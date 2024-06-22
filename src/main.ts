@@ -31,10 +31,10 @@ function checkAuthentication() { // vérifie l'authentification
 }
 
 const routes = [
-  { path: '/', component: UserHomepage, meta: { title: 'Page d\'accueil Ludus Studios - Site Officiel LS', description: 'Site Officiel LS. Tous les meilleurs jeux-vidéo du moment.' } as Meta },
-  { path: '/games/library', component: UserLibrary, meta: { title: 'Bibliothèque de jeux - Site Officiel LS', description: 'Site Officiel LS. Tous les meilleurs jeux-vidéo du moment.' } as Meta },
-  { path: '/games/:gameTitle', component: UserGame, meta: { title: 'Page de jeu individuel', description: 'description jeu' } as Meta },
-  { path: '/games/library/:genreName', component: UserGenre, meta: { title: 'Page de genre', description: 'description genre' } as Meta },
+  { path: '/', component: UserHomepage, meta: { title: 'Page d\'accueil Ludus Studios - Site Officiel LS', description: 'Site Officiel Ludus Studios. Tous les meilleurs jeux-vidéo du moment.' } as Meta },
+  { path: '/games/library', component: UserLibrary, meta: { title: 'Bibliothèque de jeux - Site Officiel LS', description: 'Site Officiel Ludus Studios. Tous les meilleurs jeux-vidéo du moment.' } as Meta },
+  { path: '/games/:gameTitle', component: UserGame, meta: { title: 'Jeu - Site Site Officiel Ludus Studios', description: 'Retrouvez la description de votre jeu et ses fonctionnalités.' } as Meta },
+  { path: '/games/library/:genreName', component: UserGenre, meta: { title: 'Genre - Site Officiel Ludus Studios', description: 'Retrouvez la description de votre genre' } as Meta },
   { path: '/stories', component: UserStories },
   { path: '/story', component: UserStory },
   { path: '/contact', component: UserContact },
@@ -87,10 +87,10 @@ router.beforeEach(async (to, from, next) => {
       const gameData = response.data;
 
       if (gameData) {
-        document.title = gameData.title || meta.title || 'Ludus Studios';
+        document.title = gameData[0].title + '™ - Site officiel Ludus Studios' || meta.title || 'Ludus Studios';
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-          metaDescription.setAttribute('content', gameData.description || meta.description || 'Tous les meilleurs jeux-vidéo du moment.');
+          metaDescription.setAttribute('content', gameData[0].description || meta.description || 'Tous les meilleurs jeux-vidéo du moment.');
         }
       }
     } catch (error) {
@@ -103,14 +103,14 @@ router.beforeEach(async (to, from, next) => {
     }
   } else if (to.path.includes('/games/library/') && to.params.genreName) {
     try {
-      const response = await axios.get(`${apiBaseUrl}/api/get/genre/${to.params.genreName}`);
+      const response = await axios.get(`${apiBaseUrl}/api/get/${to.params.genreName}`);
       const genreData = response.data;
 
       if (genreData) {
-        document.title = genreData.name || meta.title || 'Ludus Studios';
+        document.title = 'Jeux vidéos ' + genreData[0].genre.name + ' - Site officiel Ludus Studios' || meta.title || 'Ludus Studios';
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-          metaDescription.setAttribute('content', genreData.description || meta.description || 'Tous les meilleurs jeux-vidéo du moment.');
+          metaDescription.setAttribute('content', genreData[0].genre.description || meta.description || 'Tous les meilleurs jeux-vidéo du moment.');
         }
       }
     } catch (error) {
