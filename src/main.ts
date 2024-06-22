@@ -1,6 +1,6 @@
 import './style/main.css'
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteMeta } from 'vue-router'
 import App from '@/App.vue'
 import UserHomepage from './views/User/UserHomepage.vue'
 import UserLibrary from './views/User/UserLibrary.vue'
@@ -19,16 +19,21 @@ import AdminGameEdit from './views/Admin/AdminGameEdit.vue'
 import AdminGameList from './views/Admin/AdminGameList.vue'
 import NotFound from '@/components/NotFound.vue'
 
+interface Meta extends RouteMeta {
+  title?: string;
+  description?: string;
+}
+
 function checkAuthentication() { // vérifie l'authentification
   const token = localStorage.getItem('authToken');
   return !!token;
 }
 
 const routes = [
-  { path: '/', component: UserHomepage },
-  { path: '/games/library', component: UserLibrary },
-  { path: '/games/:gameTitle', component: UserGame },
-  { path: '/games/library/:genreName', component: UserGenre },
+  { path: '/', component: UserHomepage, meta: { title: 'Page d\'accueil Ludus Studios - Site Officiel LS', description: 'Site Officiel LS. Tous les meilleurs jeux-vidéo du moment.' } as Meta },
+  { path: '/games/library', component: UserLibrary, meta: { title: 'Bibliothèque de jeux - Site Officiel LS', description: 'Site Officiel LS. Tous les meilleurs jeux-vidéo du moment.' } as Meta },
+  { path: '/games/:gameTitle', component: UserGame, meta: { title: 'Page de jeu individuel', description: 'description jeu' } as Meta },
+  { path: '/games/library/:genreName', component: UserGenre, meta: { title: 'Page de genre', description: 'description genre' } as Meta },
   { path: '/stories', component: UserStories },
   { path: '/story', component: UserStory },
   { path: '/contact', component: UserContact },
@@ -40,7 +45,7 @@ const routes = [
   { path: '/admin/addgame', component: AdminGameAdd, meta: { requiresAuth: true } },
   { path: '/admin/editgame/:gameTitle', component: AdminGameEdit, meta: { requiresAuth: true } },
   { path: '/admin/listgames', component: AdminGameList, meta: { requiresAuth: true } },
-  { path: '/404', component: NotFound },
+  { path: '/404', component: NotFound, meta: { title: 'Page non trouvée - Site Officiel LS', description: 'La page que vous recherchez n\'existe pas.' } as Meta },
   { path: '/:catchAll(.*)', redirect: '/404' }
 ]
 
@@ -67,6 +72,19 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     next(); // si la route ne nécessite pas d'authentification, poursuit simplement la navigation
+  }
+  // Mettre à jour le titre
+  const meta = to.meta as Meta;
+  if (meta.title) {
+    document.title = meta.title;
+  }
+
+  // Mettre à jour la description
+  if (meta.description) {
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', meta.description);
+    }
   }
 });
 
