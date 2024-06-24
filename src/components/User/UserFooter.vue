@@ -8,7 +8,6 @@
         <li v-for="link in footerLinks" key="footerLinks.url">
           <RouterLink :to="link.url" :title="link.title">{{ link.label }}</RouterLink>
         </li>
-        <li><a href="mailto:contact@ludusstudios.com">Contactez-nous</a></li>
       </ul>
       <p>©Ludus Studios</p>
     </div>
@@ -16,7 +15,7 @@
       <li v-for="link in footerLinks" key="footerLinks.url">
         <RouterLink :to="link.url" :title="link.title">{{ link.label }}</RouterLink>
       </li>
-      <li><a href="mailto:contact@ludusstudios.com">Contactez-nous</a></li>
+      <!-- <li><a href="mailto:contact@ludusstudios.com">Contactez-nous</a></li> -->
     </ul>
   </footer>
 </template>
@@ -27,8 +26,8 @@ import { useMediaQuery } from '@vueuse/core';
 
 const footerLinks = ref([
   { url: "/games/library", label: "Bibliothèque de jeux", title: "Bibliothèque de jeux" },
+  { url: "/contact", label: "Contact", title: "Contact" },
   // { url: "/visits", label: "Visites", title: "Visites" },
-  // { url: "/contact", label: "Contact", title: "Contact" },
   // { url: "/hire", label: "Recrutement", title: "Recrutement" },
   // { url: "/legal", label: "Mentions légales", title: "Mentions légales" }
 ])

@@ -9,7 +9,7 @@ import UserGame from './views/User/UserGame.vue'
 import UserGenre from './views/User/UserGenre.vue'
 import UserStories from './views/UserStories.vue'
 import UserStory from './views/UserStory.vue'
-import UserContact from './views/UserContact.vue'
+import UserContact from './views/User/UserContact.vue'
 import AdminLogin from './views/Admin/AdminLogin.vue'
 import AdminSignUp from './views/Admin/AdminSignUp.vue'
 import AdminCreateNews from './views/Admin/AdminCreateNews.vue'
@@ -35,9 +35,9 @@ const routes = [
   { path: '/games/library', component: UserLibrary, meta: { title: 'Bibliothèque de jeux - Site Officiel LS', description: 'Site Officiel Ludus Studios. Tous les meilleurs jeux-vidéo du moment.' } as Meta },
   { path: '/games/:gameTitle', component: UserGame, meta: { title: 'Jeu - Site Site Officiel Ludus Studios', description: 'Retrouvez la description de votre jeu et ses fonctionnalités.' } as Meta },
   { path: '/games/library/:genreName', component: UserGenre, meta: { title: 'Genre - Site Officiel Ludus Studios', description: 'Retrouvez la description de votre genre' } as Meta },
+  { path: '/contact', component: UserContact, meta: { title: 'Contactez Ludus Studios - Nous sommes là pour vous aider !', description: 'Contactez Ludus Studios pour toute question ou demande d’information. Remplissez notre formulaire de contact et notre équipe vous répondra dans les plus brefs délais. ' } as Meta },
   { path: '/stories', component: UserStories },
   { path: '/story', component: UserStory },
-  { path: '/contact', component: UserContact },
   { path: '/admin/login', component: AdminLogin },
   { path: '/admin/signup', component: AdminSignUp },
   { path: '/admin/news/create', component: AdminCreateNews, meta: { requiresAuth: true } },

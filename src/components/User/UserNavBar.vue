@@ -50,11 +50,11 @@ onClickOutside(navMenu, closeNav) // Click outside the BM and the menu closes
 
 const navLinks = ref([
   { url: "/", label: "ACCUEIL", title: "Accueil" },
-  { url: "/games/library", label: "JEUX", title: "Jeux" }
+  { url: "/games/library", label: "JEUX", title: "Jeux" },
+  { url: "/contact", label: "CONTACT", title: "Contact" },
   // { url: "/stories", label: "ACTUALITÉS", title: "Actualités" },
   // { url: "/visits", label: "VISITES", title: "Visites" },
   // { url: "/hire", label: "RECRUTEMENT", title: "Recrutement" }
-  // { url: "/contact", label: "CONTACT", title: "Contact" }
 ])
 
 const active = ref('active'); // Make active class reactive
