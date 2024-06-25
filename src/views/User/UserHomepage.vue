@@ -27,7 +27,7 @@
       <div class="game-grid">
         <div class="game-box" v-for="game in Games" :key="game.title">
           <RouterLink :to="'/games/' + formatTitleToUrl(game.title)" :title="game.title">
-            <img height="319" width="auto" :src="game.img" :alt="'Image du jeu' + game.title">
+            <img height="319" width="auto" :src="game.img" :alt="'Image du jeu ' + game.title">
             <span>{{ game.title }}</span>
           </RouterLink>
         </div>
