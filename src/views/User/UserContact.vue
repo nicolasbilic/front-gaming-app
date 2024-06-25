@@ -1,6 +1,7 @@
 <template>
   <section class="contact-container">
-    <img src="../../assets/jpg/contact-bg-img.webp" alt="Personnage de jeux-vidéo en arrière-plan" />
+    <img width="504" height="697" src="../../assets/jpg/contact-bg-character.webp"
+      alt="Personnage de jeux-vidéo en arrière-plan" />
     <div class="contact-form-container">
       <h1>Contactez-nous</h1>
       <form ref="form" @submit.prevent="handleSubmit" class="contact-form">
@@ -211,12 +212,21 @@ const resetConfirmationMessage = () => {
   z-index: 0;
 }
 
+.contact-container::before {
+  content: "";
+  background-image: url('../../assets/jpg/contact-bg-character.webp');
+  position: absolute;
+  top: -9999rem;
+  left: -9999rem;
+  opacity: 0;
+}
+
 .contact-container img {
   position: absolute;
   top: 0;
   right: 0;
-  width: auto;
-  height: 100%;
+  /* width: auto; cette combinaison permet de déterminer les dimensions de l'image en regardant ses dimensions affichées dans le navigateur
+  height: 100%; */
   z-index: -1;
 
   @media (width < 870px) {
