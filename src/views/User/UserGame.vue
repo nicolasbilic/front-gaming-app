@@ -1,6 +1,5 @@
 <template>
-  <div class="one-game-container" v-for="game in Games" :key="game.title" style="background-color: #ffffff"
-    v-if="!isLoading">
+  <div class="one-game-container" v-for="game in Games" :key="game.title" v-if="!isLoading">
     <section class="one-game-main-info" :style="{ display: use1100width ? 'grid' : 'flex' }">
       <!-- 1st Grid column -->
       <div class="one-game-grid">
