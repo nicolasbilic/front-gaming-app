@@ -1,28 +1,74 @@
 <template>
   <header>
+    <p>test preview on new branch</p>
     <nav>
       <!--- NavMenu Mobile --->
-      <div class="sidenav" ref="navMenu" :style="{ left: isNavOpen ? '0' : '-250px' }"> <!-- Burger Menu -->
-        <div id="closeBtn"> <!-- Close BM -->
-          <img @click="closeNav" src="../../assets/svg/x-mark.svg" title="Fermer le menu" alt="Fermer le menu">
+      <div
+        class="sidenav"
+        ref="navMenu"
+        :style="{ left: isNavOpen ? '0' : '-250px' }"
+      >
+        <!-- Burger Menu -->
+        <div id="closeBtn">
+          <!-- Close BM -->
+          <img
+            @click="closeNav"
+            src="../../assets/svg/x-mark.svg"
+            title="Fermer le menu"
+            alt="Fermer le menu"
+          />
         </div>
-        <ul> <!-- Links BM -->
+        <ul>
+          <!-- Links BM -->
           <li v-for="link in navLinks" :key="link.url">
-            <RouterLink :active-class="active" :to="link.url" :title="link.title" @click="closeNav">{{ link.label }}
+            <RouterLink
+              :active-class="active"
+              :to="link.url"
+              :title="link.title"
+              @click="closeNav"
+              >{{ link.label }}
             </RouterLink>
           </li>
         </ul>
       </div>
-      <a id="openBtn" @click="toggleNav" :style="{ display: is1100Screen ? 'flex' : 'none' }"> <!-- BM Icon -->
-        <img src="../../assets/svg/hamburger.svg" title="Ouvrir le menu" alt="Ouvrir le menu">
+      <a
+        id="openBtn"
+        @click="toggleNav"
+        :style="{ display: is1100Screen ? 'flex' : 'none' }"
+      >
+        <!-- BM Icon -->
+        <img
+          src="../../assets/svg/hamburger.svg"
+          title="Ouvrir le menu"
+          alt="Ouvrir le menu"
+        />
       </a>
-      <RouterLink class="brand" to="/" title="Accueil Ludus Studios"
-        :style="{ marginLeft: is1100Screen ? '' : '50px' }">
-        <img height="13" width="141" src="../../assets/svg/brand-logo.svg" alt="Marque Ludus Studios">
+      <RouterLink
+        class="brand"
+        to="/"
+        title="Accueil Ludus Studios"
+        :style="{ marginLeft: is1100Screen ? '' : '50px' }"
+      >
+        <img
+          height="13"
+          width="141"
+          src="../../assets/svg/brand-logo.svg"
+          alt="Marque Ludus Studios"
+        />
       </RouterLink>
-      <ul> <!-- NavLinks -->
-        <li v-for="link in navLinks" key="navLinks.url" :style="{ display: is1100Screen ? 'none' : 'block' }">
-          <RouterLink :active-class="active" :to="link.url" :title="link.title">{{ link.label }}</RouterLink>
+      <ul>
+        <!-- NavLinks -->
+        <li
+          v-for="link in navLinks"
+          key="navLinks.url"
+          :style="{ display: is1100Screen ? 'none' : 'block' }"
+        >
+          <RouterLink
+            :active-class="active"
+            :to="link.url"
+            :title="link.title"
+            >{{ link.label }}</RouterLink
+          >
         </li>
       </ul>
       <!-- <RouterLink class="admin" to="/admin/login" title="Panel Admin">
@@ -33,12 +79,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { onClickOutside } from '@vueuse/core';
-import { useMediaQuery } from '@vueuse/core';
+import { ref } from "vue";
+import { onClickOutside } from "@vueuse/core";
+import { useMediaQuery } from "@vueuse/core";
 
 const isNavOpen = ref(false); // Initialize BM with false value (it's closed) - Make it reactive with ref function
-const toggleNav = () => { // Switch between opening and closing BM - Current value becomes its inverse value
+const toggleNav = () => {
+  // Switch between opening and closing BM - Current value becomes its inverse value
   isNavOpen.value = !isNavOpen.value;
 };
 const closeNav = () => {
@@ -46,7 +93,7 @@ const closeNav = () => {
 };
 
 const navMenu = ref();
-onClickOutside(navMenu, closeNav) // Click outside the BM and the menu closes
+onClickOutside(navMenu, closeNav); // Click outside the BM and the menu closes
 
 const navLinks = ref([
   { url: "/", label: "ACCUEIL", title: "Accueil" },
@@ -55,12 +102,12 @@ const navLinks = ref([
   // { url: "/stories", label: "ACTUALITÉS", title: "Actualités" },
   // { url: "/visits", label: "VISITES", title: "Visites" },
   // { url: "/hire", label: "RECRUTEMENT", title: "Recrutement" }
-])
+]);
 
-const active = ref('active'); // Make active class reactive
+const active = ref("active"); // Make active class reactive
 
-const is1100Screen = useMediaQuery('(max-width: 1100px)')
-const is576Screen = useMediaQuery('(max-width: 576px)')
+const is1100Screen = useMediaQuery("(max-width: 1100px)");
+const is576Screen = useMediaQuery("(max-width: 576px)");
 </script>
 
 <style scoped>
@@ -68,7 +115,7 @@ nav {
   display: flex;
   min-height: 40px;
   align-items: center;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   padding: 10px 0;
 
   .sidenav {
@@ -111,7 +158,6 @@ nav {
       color: var(--text-color-secondary);
       background-color: var(--color-horror-primary);
     }
-
   }
 
   #openBtn {
@@ -143,7 +189,7 @@ nav {
 .admin {
   display: flex;
   margin: 10px 20px 10px auto;
-  background-color: #FEA14C;
+  background-color: #fea14c;
   font-weight: 600;
   padding: 5px 15px;
   font-size: 16px;
@@ -159,7 +205,7 @@ nav {
   }
 }
 
-nav>ul {
+nav > ul {
   display: flex;
   justify-content: flex-start;
   padding-left: 50px;
