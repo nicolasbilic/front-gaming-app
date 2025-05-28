@@ -1,6 +1,5 @@
 <template>
   <header>
-    <p>test preview on new branch</p>
     <nav>
       <!--- NavMenu Mobile --->
       <div
